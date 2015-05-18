@@ -18,7 +18,7 @@ $(function() {
 		 * allFeeds variable has been defined and that it is not
 		 * empty. 
 		 */
-		it('are defined', function() {
+		it('Feeds are defined', function() {
 			expect(allFeeds).toBeDefined();
 			expect(allFeeds.length).not.toBe(0);
 		});
@@ -43,7 +43,7 @@ $(function() {
 		 * in the allFeeds object and ensures it has a name defined
 		 * and that the name is not empty.
 		 */
-		it('Name are defined and NOT Empty', function() {
+		it('Names are defined and NOT Empty', function() {
 			allFeeds.forEach(function(feed){
 			  expect(feed.name).toBeDefined();
 			  expect(feed.name.length).not.toBe(0);
@@ -84,7 +84,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          *
-		 * Load the initial feed using done(), callback to handle asynchronicity
+		 * Load the initial feed using done(), callback to handle async
 		 */
 		 beforeEach(function(done) {
            loadFeed(0, function () {                                 
@@ -94,17 +94,34 @@ $(function() {
         
         it("Contains at least one entry", function() {
           expect($('.entry').length).toBeGreaterThan(0);
-          done();
         });
     });
 		
-	});
     /* #15 Write a new test suite named "New Feed Selection" */
 	describe('New Feed Selection', function() {
-        /* TODO: Write a test that ensures when a new feed is loaded
+        /* #16 Ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
-         */
+         *
+		 * Create a variable for content comparison
+		 */
 		
+        var UpdateFeed = $(".feed").html();
+
+        beforeEach(function (done) {
+            loadFeed(1, function () {
+                done();
+            });
+        });
+
+        it('Loaded Successfully', function (done) {
+            expect(UpdateFeed).toBeDefined();
+            done();
+        });
+
+        it('New Content', function (done) {
+            expect(UpdateFeed).not.toBe($(".feed").html());
+            done();
+        });
 	});
 }());
