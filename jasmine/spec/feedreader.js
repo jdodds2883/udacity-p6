@@ -54,7 +54,7 @@ $(function() {
 
     /* #10 Write a new test suite named "The menu". */
 	describe('The Menu', function() {
-        /* Ensures the menu element is
+        /* #11 - Ensures the menu element is
          * hidden by default. Class ".menu-hidden" is applied to the body
 		 * which moves the menu off the screen
          */
@@ -63,7 +63,7 @@ $(function() {
 			expect($('.menu').position().left).toBeLessThan(0);
 		  });
 		
-         /* Ensures the menu changes
+         /* #12 - Ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * has two expectations: does the menu display when
           * clicked and does it hide when clicked again.
@@ -73,19 +73,33 @@ $(function() {
 			expect($('body').hasClass('menu-hidden')).toBe(false);
 			$('.menu-icon-link').click();
 			expect($('body').hasClass('menu-hidden')).toBe(true);
-		}); 		
+		 }); 		
 	});
 	
-    /* TODO: Write a new test suite named "Initial Entries" */
+    /* #13 Write a new test suite named "Initial Entries" */
 	describe('Initial Entries', function() {
-        /* TODO: Write a test that ensures when the loadFeed
+        /* #14 Ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+         *
+		 * Load the initial feed using done(), callback to handle asynchronicity
+		 */
+		 beforeEach(function(done) {
+           loadFeed(0, function () {                                 
+              done();
+            });
+        });
+        
+        it("Contains at least one entry", function() {
+          expect($('.entry').length).toBeGreaterThan(0);
+          done();
+        });
+    });
+		
 	});
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    /* #15 Write a new test suite named "New Feed Selection" */
 	describe('New Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
