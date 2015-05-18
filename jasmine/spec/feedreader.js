@@ -63,12 +63,19 @@ $(function() {
 			expect($('.menu').position().left).toBeLessThan(0);
 		  });
 		
-         /* TODO: Write a test that ensures the menu changes
+         /* Ensures the menu changes
           * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
+          * has two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+		 it('Menu Toggle Hide/Show', function() {
+			$('.menu-icon-link').click();
+			expect($('body').hasClass('menu-hidden')).toBe(false);
+			$('.menu-icon-link').click();
+			expect($('body').hasClass('menu-hidden')).toBe(true);
+		}); 		
 	});
+	
     /* TODO: Write a new test suite named "Initial Entries" */
 	describe('Initial Entries', function() {
         /* TODO: Write a test that ensures when the loadFeed
