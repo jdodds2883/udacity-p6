@@ -113,12 +113,12 @@ $(function() {
                 done();
             });
         });
-
+		// Checks to see if feed loaded successfully
         it('Loaded Successfully', function (done) {
             expect(UpdateFeed).toBeDefined();
             done();
         });
-
+		// Checks to see if new contect loaded successfully
         it('New Content', function (done) {
             expect(UpdateFeed).not.toBe($(".feed").html());
             done();
