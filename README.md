@@ -1,6 +1,24 @@
-# To use this App:
-1. Open index.html in your browser
+# Project Overview - To run/use this App:
+1. Clone git repository 
+2. Open index.html in your browser
 
-# Project Overview
+Project Test the following:
+The tests are as follows:
+- RSS Feeds
+  - are defined
+  - URL is defined
+  - Feed names are defined and not empty
+- Menu
+  - Menu element is hidden by default
+  - Menu toogle changes visibility when clicked
+- Initial Entries
+  - Feed container has at least a single entry
+- New Feed Selection
+  - Loads and updates page with new content
 
-In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
+# Project Details
+In this project you are given a web-based application that reads RSS feeds. 
+
+# Sources
+- [Javascript Testing - Udacity](https://www.udacity.com/course/ud549-nd)
+- [Jasmine] (http://jasmine.github.io/2.0/introduction.html)
