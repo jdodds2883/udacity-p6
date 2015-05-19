@@ -86,14 +86,14 @@ $(function() {
 		*
 		* Load the initial feed using done(), callback to handle async
 		*/
-		beforeEach(function(done) {
-			loadFeed(0);
+		beforeEach(function(done){
+			loadFeed(0, function(){
 			done();
 			});
-	
+		});
+		
 		it("Contains at least one entry", function() {
-			expect($('.feed')).toExist();
-			expect($('.entry').length).not.toBe(null);
+			expect($(".entry").length).toBeGreaterThan(0);
 		});
 	});	
 		
