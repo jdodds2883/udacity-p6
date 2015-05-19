@@ -9,10 +9,10 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
-    /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
+	/* This is our first test suite - a test suite just contains
+	* a related set of tests. This suite is all about the RSS
+	* feeds definitions, the allFeeds variable in our application.
+	*/
 	describe('RSS Feeds', function() {
 		/* Tests to make sure that the
 		 * allFeeds variable has been defined and that it is not
@@ -77,6 +77,7 @@ $(function() {
 	});
 	
 	/* #13 Write a new test suite named "Initial Entries" */
+	describe('Initial Entries', function() {
 		/* #14 Ensures when the loadFeed
 		* function is called and completes its work, there is at least
 		* a single .entry element within the .feed container.
@@ -86,15 +87,15 @@ $(function() {
 		* Load the initial feed using done(), callback to handle async
 		*/
 		beforeEach(function(done) {
-			loadFeed(0, function () {
-				done();
+			loadFeed(0);
+			done();
 			});
-		});
-        
+	
 		it("Contains at least one entry", function() {
-			expect($('.entry').length).toBeGreaterThan(0);
+			expect($('.feed')).toExist();
+			expect($('.entry').length).not.toBe(null);
 		});
-	});
+	});	
 		
 	/* #15 Write a new test suite named "New Feed Selection" */
 	describe('New Feed Selection', function() {
@@ -105,11 +106,12 @@ $(function() {
 		* Create a variable for content comparison
 		*/
 		
-		var UpdateFeed = $(".feed").html();
+		var UpdateFeed;
 
 		beforeEach(function (done) {
-			loadFeed(1, function () {
-				done();
+			loadFeed(0, function () {
+				UpdateFeed = $('.feed').html();
+				loadFeed(1,done);
 			});
 		});
 		// Checks to see if feed loaded successfully
@@ -118,9 +120,8 @@ $(function() {
 			done();
 		});
 		// Checks to see if new contect loaded successfully
-		it('New Content', function (done) {
-			expect(UpdateFeed).not.toBe($(".feed").html());
-			done();
+		it('New Content', function () {
+			expect($('.feed').html()).not.toBe(UpdateFeed);
 		});
 	});
 }());

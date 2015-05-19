@@ -18,7 +18,3 @@ The tests are as follows:
 
 # Project Details
 In this project you are given a web-based application that reads RSS feeds. 
-
-# Sources
-- [Javascript Testing - Udacity](https://www.udacity.com/course/ud549-nd)
-- [Jasmine] (http://jasmine.github.io/2.0/introduction.html)
